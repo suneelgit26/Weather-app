@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Weather</h1>
+        <div class="search-wrapper">
+            <form id="search-form" role="search">
+                <input
+                    type="text"
+                    id="city-input"
+                    placeholder="Search city..."
+                    autocomplete="off"
+                    aria-label="City name"
+                >
+                <button type="submit">Search</button>
+            </form>
+            <ul id="city-results" class="city-results hidden" role="listbox"></ul>
+        </div>
+    </header>
+
+    <main>
+        <div id="loading" class="loading hidden">
+            <span class="spinner"></span>
+        </div>
+
+        <div id="error" class="error hidden" role="alert"></div>
+
+        <section id="current-weather" class="current-weather hidden" aria-label="Current weather"></section>
+
+        <section id="forecast" class="forecast hidden" aria-label="7-day forecast">
+            <h2>7-Day Forecast</h2>
+            <div id="forecast-grid" class="forecast-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
