@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#56CCF2">
     <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
     <header>
-        <h1>Weather</h1>
+        <div class="header-top">
+            <h1>Weather</h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">\uD83C\uDF19</button>
+        </div>
         <div class="search-wrapper">
             <form id="search-form" role="search">
                 <input
@@ -31,12 +41,31 @@
 
         <div id="error" class="error hidden" role="alert"></div>
 
-        <section id="current-weather" class="current-weather hidden" aria-label="Current weather"></section>
+        <div class="dashboard">
+            <!-- Current Weather Hero -->
+            <section id="current-weather" class="card full-width hidden" aria-label="Current weather" data-animate></section>
 
-        <section id="forecast" class="forecast hidden" aria-label="7-day forecast">
-            <h2>7-Day Forecast</h2>
-            <div id="forecast-grid" class="forecast-grid"></div>
-        </section>
+            <!-- Hourly Forecast -->
+            <section id="hourly-forecast" class="card full-width hidden" aria-label="Hourly forecast" data-animate></section>
+
+            <!-- Daily Forecast -->
+            <section id="daily-forecast" class="card full-width hidden" aria-label="7-day forecast" data-animate></section>
+
+            <!-- Air Quality -->
+            <section id="air-quality" class="card hidden" aria-label="Air quality" data-animate></section>
+
+            <!-- Marine Conditions -->
+            <section id="marine" class="card hidden" aria-label="Marine conditions" data-animate></section>
+
+            <!-- Atmosphere Details -->
+            <section id="atmosphere" class="card hidden" aria-label="Atmosphere" data-animate></section>
+
+            <!-- Solar Radiation -->
+            <section id="solar-radiation" class="card hidden" aria-label="Solar radiation" data-animate></section>
+
+            <!-- Soil Conditions -->
+            <section id="soil-conditions" class="card hidden" aria-label="Soil conditions" data-animate></section>
+        </div>
     </main>
 
     <footer>

@@ -1,0 +1,488 @@
+/* ============================================
+   Weather App - Component Styles
+   ============================================ */
+
+/* ---- Current Weather Hero ---- */
+.current-weather {
+    text-align: center;
+}
+
+.current-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.current-city {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.current-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.current-temp {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+}
+
+.current-feels {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+}
+
+.current-condition {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.current-sun {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-top: var(--space-sm);
+}
+
+.current-sun span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ---- Hourly Forecast ---- */
+.hourly-scroll {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--space-sm);
+    margin: 0 calc(var(--space-lg) * -1);
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+}
+
+.hourly-item {
+    flex: 0 0 70px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: var(--space-sm) var(--space-xs);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-dim);
+    transition: background var(--transition-fast);
+    font-variant-numeric: tabular-nums;
+}
+
+.hourly-item.is-now {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid var(--color-border);
+}
+
+[data-theme="night"] .hourly-item.is-now {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hourly-time {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.hourly-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.hourly-temp {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.hourly-precip {
+    font-size: 0.7rem;
+    color: #60a5fa;
+    font-weight: 500;
+}
+
+.hourly-chart-container {
+    margin-top: var(--space-md);
+    height: 120px;
+    width: 100%;
+}
+
+.hourly-chart-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ---- Daily Forecast ---- */
+.daily-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.daily-row {
+    display: grid;
+    grid-template-columns: 55px 36px 1fr auto;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    border-radius: var(--radius-sm);
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+}
+
+.daily-row:last-child {
+    border-bottom: none;
+}
+
+.daily-row:hover {
+    background: var(--color-surface-dim);
+}
+
+.daily-day {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.daily-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.daily-temp-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    min-width: 0;
+}
+
+.daily-temp-low,
+.daily-temp-high {
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    width: 32px;
+    text-align: right;
+}
+
+.daily-temp-low {
+    color: var(--color-text-muted);
+}
+
+.daily-temp-bar {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-surface-dim);
+    position: relative;
+    min-width: 40px;
+}
+
+.daily-temp-fill {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(to right, #60a5fa, #fbbf24, #f97316);
+}
+
+.daily-extra {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+.daily-details {
+    display: none;
+    grid-column: 1 / -1;
+    padding: var(--space-md);
+    margin-top: var(--space-sm);
+}
+
+.daily-row.expanded .daily-details {
+    display: block;
+}
+
+.daily-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-sm);
+}
+
+/* ---- Air Quality ---- */
+.aqi-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+.aqi-gauge-container {
+    width: 140px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.aqi-info {
+    flex: 1;
+}
+
+.aqi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.aqi-label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.aqi-sublabel {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.pollutant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.pollutant-item {
+    background: var(--color-surface-dim);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
+    text-align: center;
+}
+
+.pollutant-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+}
+
+.pollutant-value {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.pollutant-unit {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+}
+
+.pollen-section {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.pollen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+.pollen-item {
+    background: var(--color-surface-dim);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
+    text-align: center;
+}
+
+.pollen-name {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    text-transform: capitalize;
+}
+
+.pollen-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* ---- Marine ---- */
+.marine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-sm);
+}
+
+.marine-item {
+    background: var(--color-surface-dim);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.marine-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.marine-label {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+}
+
+.marine-unit {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+}
+
+.marine-direction {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.direction-arrow {
+    display: inline-block;
+    transition: transform var(--transition-fast);
+}
+
+/* ---- Solar & Soil Detail Panels ---- */
+.detail-panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: var(--space-sm);
+}
+
+.depth-chart {
+    margin-top: var(--space-md);
+}
+
+.depth-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    font-size: 0.85rem;
+}
+
+.depth-label {
+    width: 65px;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.depth-bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--color-surface-dim);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.depth-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width var(--transition-slow);
+}
+
+.depth-value {
+    width: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- SVG Charts ---- */
+.chart-svg {
+    display: block;
+}
+
+.chart-line {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.chart-area {
+    opacity: 0.15;
+}
+
+.chart-dot {
+    r: 3;
+    fill: var(--color-text);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.chart-svg:hover .chart-dot {
+    opacity: 1;
+}
+
+.chart-label {
+    font-size: 10px;
+    fill: var(--color-text-muted);
+    font-family: inherit;
+}
+
+.chart-grid-line {
+    stroke: var(--color-border);
+    stroke-width: 0.5;
+}
+
+/* ---- Gauge ---- */
+.gauge-track {
+    fill: none;
+    stroke: var(--color-surface-dim);
+    stroke-width: 10;
+    stroke-linecap: round;
+}
+
+.gauge-fill {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease;
+}
+
+/* ---- Tab / Subsection Labels ---- */
+.subsection-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
