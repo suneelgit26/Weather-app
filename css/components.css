@@ -214,13 +214,12 @@
 }
 
 .daily-details {
-    display: none;
     grid-column: 1 / -1;
     padding: var(--space-md);
     margin-top: var(--space-sm);
 }
 
-.daily-row.expanded .daily-details {
+.daily-row.expanded + .daily-details {
     display: block;
 }
 
