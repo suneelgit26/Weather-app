@@ -17,7 +17,9 @@ A comprehensive, mobile-friendly weather dashboard built with vanilla HTML, CSS,
 - **Animated SVG icons** — custom weather icons with rain, snow, lightning, cloud drift, and sun ray animations
 - **SVG charts** — line charts, bar charts, sparklines, arc gauges, and temperature range bars
 - **Glass-morphism UI** — frosted glass cards with backdrop blur and smooth entrance animations
-- **Responsive design** — works on mobile, tablet, and desktop
+- **Responsive design** — optimized for iPhone (safe areas, 44px touch targets), tablets, and desktop with 3-tier breakpoints
+- **Keyboard accessible** — search dropdown navigable with arrow keys/Enter/Escape, daily rows expandable with Enter/Space, focus-visible outlines throughout
+- **Reduced motion support** — respects `prefers-reduced-motion` for users who prefer minimal animation
 - **No API key required** — powered by the free [Open-Meteo](https://open-meteo.com/) API
 
 ## Running Locally
