@@ -3,19 +3,12 @@
 import { getWeatherInfo } from "../weather-codes.js";
 import { createWeatherIcon } from "./icons.js";
 import { createLineChart } from "./charts.js";
+import { getCurrentHourIndex } from "./utils.js";
 
 const hourlyEl = document.getElementById("hourly-forecast");
 
 export function renderHourlyForecast(hourly, units) {
-    // Find current hour index
-    const now = new Date();
-    let startIdx = 0;
-    for (let i = 0; i < hourly.time.length; i++) {
-        if (new Date(hourly.time[i]) >= now) {
-            startIdx = Math.max(0, i - 1);
-            break;
-        }
-    }
+    const startIdx = getCurrentHourIndex(hourly);
     const endIdx = Math.min(startIdx + 24, hourly.time.length);
     const slice = { start: startIdx, end: endIdx };
 

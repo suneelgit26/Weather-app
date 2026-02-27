@@ -188,3 +188,28 @@
     opacity: 0;
     animation: fade-in 0.8s ease forwards 0.3s;
 }
+
+/* ---- Skeleton Loading ---- */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface-dim);
+    border-radius: var(--radius-sm);
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+[data-theme="night"] .skeleton::after {
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
+}
+
+@keyframes skeleton-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}

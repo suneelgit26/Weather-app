@@ -110,7 +110,7 @@ export function createLineChart(data, options = {}) {
     }
 
     // Line
-    s.appendChild(svgEl("path", { d: pathD, stroke: color, class: "chart-line" }));
+    s.appendChild(svgEl("path", { d: pathD, stroke: color, class: "chart-line chart-line-animated" }));
 
     // Dots
     if (showDots) {
@@ -222,7 +222,7 @@ export function createArcGauge(value, max, color = "#22c55e") {
         fill: "none", stroke: color, "stroke-width": "10", "stroke-linecap": "round",
         "stroke-dasharray": circumference,
         "stroke-dashoffset": offset,
-        class: "gauge-fill",
+        class: "gauge-fill gauge-fill-animated",
         style: `--gauge-circumference: ${circumference}`
     }));
 

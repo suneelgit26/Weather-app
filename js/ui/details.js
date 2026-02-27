@@ -1,6 +1,7 @@
 // Details - Atmosphere, Solar Radiation, Soil Conditions panels
 
 import { createBarChart } from "./charts.js";
+import { getCurrentHourIndex, getCurrentDayStartIndex, detailItem } from "./utils.js";
 
 const atmosphereEl = document.getElementById("atmosphere");
 const solarEl = document.getElementById("solar-radiation");
@@ -73,7 +74,7 @@ export function renderSolar(hourly, hourlyUnits, daily, dailyUnits) {
 
     if (radData.length > 2 && radData.some((v) => v > 0)) {
         html += `<div class="subsection-label">Today's Radiation</div>`;
-        html += `<div id="solar-chart-slot" style="height:60px;margin-top:var(--space-sm)"></div>`;
+        html += `<div id="solar-chart-slot" class="chart-slot-sm"></div>`;
     }
 
     solarEl.innerHTML = html;
@@ -130,7 +131,7 @@ export function renderSoil(hourly, hourlyUnits) {
             <div class="depth-row">
                 <span class="depth-label">${depth}</span>
                 <div class="depth-bar-track">
-                    <div class="depth-bar-fill" style="width:${pct}%;background:linear-gradient(to right,#60a5fa,#f97316)"></div>
+                    <div class="depth-bar-fill depth-bar-temp" style="width:${pct}%"></div>
                 </div>
                 <span class="depth-value">${val.toFixed(1)}${unit}</span>
             </div>
@@ -150,7 +151,7 @@ export function renderSoil(hourly, hourlyUnits) {
             <div class="depth-row">
                 <span class="depth-label">${depth}</span>
                 <div class="depth-bar-track">
-                    <div class="depth-bar-fill" style="width:${pct}%;background:linear-gradient(to right,#67e8f9,#3b82f6)"></div>
+                    <div class="depth-bar-fill depth-bar-moisture" style="width:${pct}%"></div>
                 </div>
                 <span class="depth-value">${val.toFixed(3)} ${unit}</span>
             </div>
@@ -160,33 +161,4 @@ export function renderSoil(hourly, hourlyUnits) {
 
     soilEl.innerHTML = html;
     soilEl.classList.remove("hidden");
-}
-
-// ---- Helpers ----
-function detailItem(label, value) {
-    return `
-        <div class="detail-item">
-            <span class="detail-label">${label}</span>
-            <span class="detail-value">${value}</span>
-        </div>
-    `;
-}
-
-function getCurrentHourIndex(hourly) {
-    const now = new Date();
-    for (let i = 0; i < hourly.time.length; i++) {
-        if (new Date(hourly.time[i]) >= now) {
-            return Math.max(0, i - 1);
-        }
-    }
-    return 0;
-}
-
-function getCurrentDayStartIndex(hourly) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    for (let i = 0; i < hourly.time.length; i++) {
-        if (new Date(hourly.time[i]) >= today) return i;
-    }
-    return 0;
 }
