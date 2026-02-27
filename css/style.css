@@ -80,11 +80,15 @@ body {
     transition: background 1.5s ease, color var(--transition-normal);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ---- Header ---- */
 header {
     padding: var(--space-lg) var(--space-md);
+    padding-top: calc(var(--space-lg) + env(safe-area-inset-top, 0px));
+    padding-left: calc(var(--space-md) + env(safe-area-inset-left, 0px));
+    padding-right: calc(var(--space-md) + env(safe-area-inset-right, 0px));
     text-align: center;
     position: relative;
     z-index: 20;
@@ -224,6 +228,8 @@ header h1 {
 main {
     flex: 1;
     padding: var(--space-lg) var(--space-md);
+    padding-left: calc(var(--space-md) + env(safe-area-inset-left, 0px));
+    padding-right: calc(var(--space-md) + env(safe-area-inset-right, 0px));
     max-width: var(--max-width);
     width: 100%;
     margin: 0 auto;
@@ -275,6 +281,7 @@ main {
 footer {
     text-align: center;
     padding: var(--space-md);
+    padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.85rem;
 }
@@ -316,6 +323,37 @@ footer a:hover {
 .aqi-unhealthy { color: #ef4444; }
 .aqi-very-unhealthy { color: #7c3aed; }
 .aqi-hazardous { color: #7f1d1d; }
+
+/* ---- Responsive: Small phones (iPhone SE, etc.) ---- */
+@media (max-width: 380px) {
+    .current-temp {
+        font-size: 2.8rem;
+    }
+
+    .daily-row {
+        grid-template-columns: 45px 32px 1fr auto;
+    }
+
+    .daily-temp-low,
+    .daily-temp-high {
+        width: 28px;
+        font-size: 0.8rem;
+    }
+
+    .aqi-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .marine-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .detail-grid,
+    .detail-panel-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+}
 
 /* ---- Responsive: Tablet ---- */
 @media (min-width: 640px) {
