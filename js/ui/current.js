@@ -3,6 +3,7 @@
 import { getWeatherInfo } from "../weather-codes.js";
 import { createWeatherIcon } from "./icons.js";
 import { getTemperatureClass, getUvClass, getUvLabel } from "../theme.js";
+import { escapeHtml, formatTime, getWindDir, detailItem } from "./utils.js";
 
 const currentEl = document.getElementById("current-weather");
 
@@ -29,42 +30,15 @@ export function renderCurrentWeather(current, units, daily, cityName) {
             </div>
         </div>
         <div class="detail-grid">
-            <div class="detail-item">
-                <span class="detail-label">Humidity</span>
-                <span class="detail-value">${current.relative_humidity_2m}${units.relative_humidity_2m}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Dew Point</span>
-                <span class="detail-value">${Math.round(current.dew_point_2m)}${units.dew_point_2m}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Wind</span>
-                <span class="detail-value">${current.wind_speed_10m} ${units.wind_speed_10m} ${getWindDir(current.wind_direction_10m)}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Gusts</span>
-                <span class="detail-value">${current.wind_gusts_10m} ${units.wind_gusts_10m}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">UV Index</span>
-                <span class="detail-value ${uvClass}">${current.uv_index} (${uvLabel})</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Visibility</span>
-                <span class="detail-value">${(current.visibility / 1000).toFixed(1)} km</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Pressure</span>
-                <span class="detail-value">${Math.round(current.pressure_msl)} hPa</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Cloud Cover</span>
-                <span class="detail-value">${current.cloud_cover}${units.cloud_cover}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Precipitation</span>
-                <span class="detail-value">${current.precipitation} ${units.precipitation}</span>
-            </div>
+            ${detailItem("Humidity", `${current.relative_humidity_2m}${units.relative_humidity_2m}`)}
+            ${detailItem("Dew Point", `${Math.round(current.dew_point_2m)}${units.dew_point_2m}`)}
+            ${detailItem("Wind", `${current.wind_speed_10m} ${units.wind_speed_10m} ${getWindDir(current.wind_direction_10m)}`)}
+            ${detailItem("Gusts", `${current.wind_gusts_10m} ${units.wind_gusts_10m}`)}
+            ${detailItem("UV Index", `<span class="${uvClass}">${current.uv_index} (${uvLabel})</span>`)}
+            ${detailItem("Visibility", `${(current.visibility / 1000).toFixed(1)} km`)}
+            ${detailItem("Pressure", `${Math.round(current.pressure_msl)} hPa`)}
+            ${detailItem("Cloud Cover", `${current.cloud_cover}${units.cloud_cover}`)}
+            ${detailItem("Precipitation", `${current.precipitation} ${units.precipitation}`)}
         </div>
     `;
 
@@ -75,24 +49,4 @@ export function renderCurrentWeather(current, units, daily, cityName) {
     }
 
     currentEl.classList.remove("hidden");
-}
-
-function getWindDir(degrees) {
-    const dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-    return dirs[Math.round(degrees / 45) % 8];
-}
-
-function formatTime(isoStr) {
-    try {
-        const d = new Date(isoStr);
-        return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-    } catch {
-        return isoStr;
-    }
-}
-
-function escapeHtml(str) {
-    const div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
 }

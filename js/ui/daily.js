@@ -4,6 +4,7 @@ import { getWeatherInfo } from "../weather-codes.js";
 import { createWeatherIcon } from "./icons.js";
 import { createTemperatureBar } from "./charts.js";
 import { getUvClass, getUvLabel } from "../theme.js";
+import { formatTime, getWindDir } from "./utils.js";
 
 const dailyEl = document.getElementById("daily-forecast");
 
@@ -26,7 +27,7 @@ export function renderDailyForecast(daily, units) {
         const sunset = daily.sunset?.[i] ? formatTime(daily.sunset[i]) : "--";
 
         html += `
-            <div class="daily-row" data-idx="${i}">
+            <div class="daily-row" data-idx="${i}" tabindex="0" role="button" aria-expanded="false">
                 <span class="daily-day">${dayName}</span>
                 <div class="daily-icon" data-icon="${iconId}" data-size="32"></div>
                 <div class="daily-temp-bar-wrapper">
@@ -37,6 +38,7 @@ export function renderDailyForecast(daily, units) {
                 <div class="daily-extra">
                     ${precipProb != null ? `<span>\uD83D\uDCA7 ${precipProb}%</span>` : ""}
                 </div>
+                <span class="daily-chevron" aria-hidden="true">&#x276F;</span>
             </div>
             <div class="daily-details hidden" id="daily-details-${i}">
                 <div class="daily-details-grid">
@@ -114,32 +116,26 @@ export function renderDailyForecast(daily, units) {
         }
     });
 
-    // Expand/collapse on click
+    // Expand/collapse on click and keyboard
     dailyEl.querySelectorAll(".daily-row").forEach((row) => {
-        row.addEventListener("click", () => {
+        const toggle = () => {
             const idx = row.dataset.idx;
             const details = dailyEl.querySelector(`#daily-details-${idx}`);
             if (details) {
+                const isExpanded = !details.classList.contains("hidden");
                 details.classList.toggle("hidden");
                 row.classList.toggle("expanded");
+                row.setAttribute("aria-expanded", String(!isExpanded));
+            }
+        };
+        row.addEventListener("click", toggle);
+        row.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggle();
             }
         });
     });
 
     dailyEl.classList.remove("hidden");
-}
-
-function getWindDir(degrees) {
-    if (degrees == null) return "";
-    const dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-    return dirs[Math.round(degrees / 45) % 8];
-}
-
-function formatTime(isoStr) {
-    try {
-        const d = new Date(isoStr);
-        return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-    } catch {
-        return isoStr;
-    }
 }
