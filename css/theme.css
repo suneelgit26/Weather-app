@@ -89,6 +89,11 @@
 
 /* ---- Responsive: Phones (up to 480px) ---- */
 @media (max-width: 480px) {
+    .card {
+        padding: var(--space-md);
+        border-radius: var(--radius-md);
+    }
+
     .detail-grid,
     .detail-panel-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -96,6 +101,15 @@
 
     .detail-item {
         padding: var(--space-xs) var(--space-sm);
+        border-radius: var(--radius-sm);
+    }
+
+    .detail-item .detail-value {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        margin-bottom: var(--space-sm);
     }
 }
 
