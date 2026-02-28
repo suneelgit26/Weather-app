@@ -87,7 +87,7 @@ export function renderSolar(hourly, hourlyUnits, daily, dailyUnits) {
             const t = new Date(hourly.time[i]);
             labels.push(t.toLocaleTimeString("en-US", { hour: "numeric" }));
         }
-        const chartWidth = chartSlot.clientWidth || 500;
+        const chartWidth = chartSlot.clientWidth || Math.min(window.innerWidth - 48, 500);
         chartSlot.appendChild(createBarChart(radData, {
             width: chartWidth,
             height: 60,
