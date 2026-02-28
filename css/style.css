@@ -332,10 +332,52 @@ footer a:hover {
 .aqi-very-unhealthy { color: #7c3aed; }
 .aqi-hazardous { color: #7f1d1d; }
 
+/* ---- Responsive: Phones (up to 480px) ---- */
+@media (max-width: 480px) {
+    :root {
+        --space-lg: 1rem;
+        --space-xl: 1.25rem;
+        --space-2xl: 1.5rem;
+        --radius-lg: 12px;
+    }
+
+    header {
+        padding: var(--space-md) var(--space-sm);
+        padding-top: calc(var(--space-md) + env(safe-area-inset-top, 0px));
+        padding-left: calc(var(--space-sm) + env(safe-area-inset-left, 0px));
+        padding-right: calc(var(--space-sm) + env(safe-area-inset-right, 0px));
+    }
+
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    main {
+        padding: var(--space-md) var(--space-sm);
+        padding-left: calc(var(--space-sm) + env(safe-area-inset-left, 0px));
+        padding-right: calc(var(--space-sm) + env(safe-area-inset-right, 0px));
+    }
+
+    #city-input {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    #search-form button {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
 /* ---- Responsive: Small phones (iPhone SE, etc.) ---- */
 @media (max-width: 380px) {
+    :root {
+        --space-lg: 0.75rem;
+        --space-md: 0.75rem;
+    }
+
     .current-temp {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
 
     .daily-row {
@@ -354,12 +396,12 @@ footer a:hover {
     }
 
     .marine-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
 
     .detail-grid,
     .detail-panel-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     }
 }
 

@@ -87,6 +87,26 @@
 .badge-moderate { background: rgba(234, 179, 8, 0.2); color: #eab308; }
 .badge-poor { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
 
+/* ---- Responsive: Phones (up to 480px) ---- */
+@media (max-width: 480px) {
+    .detail-grid,
+    .detail-panel-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .detail-item {
+        padding: var(--space-xs) var(--space-sm);
+    }
+}
+
+/* ---- Touch Devices: Disable hover lift ---- */
+@media (hover: none) {
+    .card:hover {
+        transform: none;
+        box-shadow: var(--shadow-md);
+    }
+}
+
 /* ---- Glass Surface Fallback ---- */
 @supports not (backdrop-filter: blur(1px)) {
     .card {
