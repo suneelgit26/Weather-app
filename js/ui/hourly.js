@@ -58,9 +58,10 @@ export function renderHourlyForecast(hourly, units) {
 
     const chartSlot = hourlyEl.querySelector("#hourly-chart-slot");
     if (chartSlot && temps.length > 1) {
+        const containerWidth = chartSlot.clientWidth || 600;
         const chart = createLineChart(temps, {
-            width: Math.max(600, temps.length * 30),
-            height: 120,
+            width: Math.max(containerWidth, temps.length * 25),
+            height: 100,
             color: "#60a5fa",
             labels,
             showDots: true,
