@@ -189,6 +189,44 @@
     animation: fade-in 0.8s ease forwards 0.3s;
 }
 
+/* ---- Material Ripple Effect ---- */
+.ripple-target {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-expand 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes ripple-expand {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* ---- Tab Panel Transitions ---- */
+.tab-panel.active {
+    animation: tab-enter 0.3s ease forwards;
+}
+
+@keyframes tab-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ---- Skeleton Loading ---- */
 .skeleton {
     position: relative;

@@ -16,29 +16,54 @@
     <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
-    <header>
-        <div class="header-top">
-            <h1>Weather</h1>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">\uD83C\uDF19</button>
-        </div>
-        <div class="search-wrapper">
-            <form id="search-form" role="search">
-                <input
-                    type="text"
-                    id="city-input"
-                    placeholder="Search city..."
-                    autocomplete="off"
-                    aria-label="City name"
-                    role="combobox"
-                    aria-expanded="false"
-                    aria-controls="city-results"
-                    aria-autocomplete="list"
-                >
-                <button type="submit">Search</button>
-            </form>
-            <ul id="city-results" class="city-results hidden" role="listbox"></ul>
-        </div>
-    </header>
+    <!-- Sticky App Bar + Tab Bar -->
+    <div class="sticky-header" id="sticky-header">
+        <header class="app-bar">
+            <div class="app-bar-row">
+                <h1 class="app-bar-title">Weather</h1>
+                <div class="search-wrapper">
+                    <form id="search-form" role="search">
+                        <input
+                            type="text"
+                            id="city-input"
+                            placeholder="Search city..."
+                            autocomplete="off"
+                            aria-label="City name"
+                            role="combobox"
+                            aria-expanded="false"
+                            aria-controls="city-results"
+                            aria-autocomplete="list"
+                        >
+                        <button type="submit" class="search-btn ripple-target" aria-label="Search">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                        </button>
+                    </form>
+                    <ul id="city-results" class="city-results hidden" role="listbox"></ul>
+                </div>
+                <button id="theme-toggle" class="theme-toggle ripple-target" aria-label="Toggle dark mode">🌙</button>
+            </div>
+        </header>
+
+        <!-- Top Tab Bar (desktop) -->
+        <nav class="tab-bar" id="tab-bar" role="tablist" aria-label="Content sections">
+            <button class="tab ripple-target active" data-tab="weather" role="tab" aria-selected="true" aria-controls="panel-weather">
+                <svg class="tab-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5.5 5.5 0 0 0-4.9 8H6.5A4.5 4.5 0 0 0 2 14.5 4.5 4.5 0 0 0 6.5 19h11a4.5 4.5 0 0 0 4.5-4.5c0-2.1-1.5-3.9-3.5-4.4A5.5 5.5 0 0 0 12 2z"/></svg>
+                <span>Weather</span>
+            </button>
+            <button class="tab ripple-target" data-tab="airsea" role="tab" aria-selected="false" aria-controls="panel-airsea">
+                <svg class="tab-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 15c1.7 0 3-1 3-1s1.3 1 3 1 3-1 3-1 1.3 1 3 1 3-1 3-1 1.3 1 3 1M2 19c1.7 0 3-1 3-1s1.3 1 3 1 3-1 3-1 1.3 1 3 1 3-1 3-1 1.3 1 3 1M17.5 8A2.5 2.5 0 1 0 17.5 3a2.5 2.5 0 0 0 0 5zM5 11h7.5c1.9 0 3.5-1.6 3.5-3.5S14.4 4 12.5 4"/></svg>
+                <span>Air & Sea</span>
+            </button>
+            <button class="tab ripple-target" data-tab="environment" role="tab" aria-selected="false" aria-controls="panel-environment">
+                <svg class="tab-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg>
+                <span>Environment</span>
+            </button>
+            <div class="tab-indicator" id="tab-indicator"></div>
+        </nav>
+    </div>
 
     <main>
         <div id="loading" class="loading hidden">
@@ -48,31 +73,43 @@
         <div id="error" class="error hidden" role="alert"></div>
 
         <div class="dashboard">
-            <!-- Current Weather Hero -->
-            <section id="current-weather" class="card full-width hidden" aria-label="Current weather" data-animate></section>
+            <!-- Tab: Weather -->
+            <div class="tab-panel active" id="panel-weather" role="tabpanel" aria-labelledby="tab-weather">
+                <section id="current-weather" class="card full-width hidden" aria-label="Current weather" data-animate></section>
+                <section id="hourly-forecast" class="card full-width hidden" aria-label="Hourly forecast" data-animate></section>
+                <section id="daily-forecast" class="card full-width hidden" aria-label="7-day forecast" data-animate></section>
+            </div>
 
-            <!-- Hourly Forecast -->
-            <section id="hourly-forecast" class="card full-width hidden" aria-label="Hourly forecast" data-animate></section>
+            <!-- Tab: Air & Sea -->
+            <div class="tab-panel" id="panel-airsea" role="tabpanel" aria-labelledby="tab-airsea">
+                <section id="air-quality" class="card hidden" aria-label="Air quality" data-animate></section>
+                <section id="marine" class="card hidden" aria-label="Marine conditions" data-animate></section>
+            </div>
 
-            <!-- Daily Forecast -->
-            <section id="daily-forecast" class="card full-width hidden" aria-label="7-day forecast" data-animate></section>
-
-            <!-- Air Quality -->
-            <section id="air-quality" class="card hidden" aria-label="Air quality" data-animate></section>
-
-            <!-- Marine Conditions -->
-            <section id="marine" class="card hidden" aria-label="Marine conditions" data-animate></section>
-
-            <!-- Atmosphere Details -->
-            <section id="atmosphere" class="card hidden" aria-label="Atmosphere" data-animate></section>
-
-            <!-- Solar Radiation -->
-            <section id="solar-radiation" class="card hidden" aria-label="Solar radiation" data-animate></section>
-
-            <!-- Soil Conditions -->
-            <section id="soil-conditions" class="card hidden" aria-label="Soil conditions" data-animate></section>
+            <!-- Tab: Environment -->
+            <div class="tab-panel" id="panel-environment" role="tabpanel" aria-labelledby="tab-environment">
+                <section id="atmosphere" class="card hidden" aria-label="Atmosphere" data-animate></section>
+                <section id="solar-radiation" class="card hidden" aria-label="Solar radiation" data-animate></section>
+                <section id="soil-conditions" class="card hidden" aria-label="Soil conditions" data-animate></section>
+            </div>
         </div>
     </main>
+
+    <!-- Bottom Navigation (mobile) -->
+    <nav class="bottom-nav" id="bottom-nav" aria-label="Main navigation">
+        <button class="bottom-nav-item ripple-target active" data-tab="weather" aria-label="Weather">
+            <svg class="bottom-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5.5 5.5 0 0 0-4.9 8H6.5A4.5 4.5 0 0 0 2 14.5 4.5 4.5 0 0 0 6.5 19h11a4.5 4.5 0 0 0 4.5-4.5c0-2.1-1.5-3.9-3.5-4.4A5.5 5.5 0 0 0 12 2z"/></svg>
+            <span class="bottom-nav-label">Weather</span>
+        </button>
+        <button class="bottom-nav-item ripple-target" data-tab="airsea" aria-label="Air & Sea">
+            <svg class="bottom-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2 15c1.7 0 3-1 3-1s1.3 1 3 1 3-1 3-1 1.3 1 3 1 3-1 3-1 1.3 1 3 1M2 19c1.7 0 3-1 3-1s1.3 1 3 1 3-1 3-1 1.3 1 3 1 3-1 3-1 1.3 1 3 1M17.5 8A2.5 2.5 0 1 0 17.5 3a2.5 2.5 0 0 0 0 5zM5 11h7.5c1.9 0 3.5-1.6 3.5-3.5S14.4 4 12.5 4"/></svg>
+            <span class="bottom-nav-label">Air & Sea</span>
+        </button>
+        <button class="bottom-nav-item ripple-target" data-tab="environment" aria-label="Environment">
+            <svg class="bottom-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg>
+            <span class="bottom-nav-label">Environment</span>
+        </button>
+    </nav>
 
     <footer>
         <p>Powered by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
