@@ -63,7 +63,7 @@ The app deploys automatically to GitHub Pages on every push to `main` via GitHub
 
 ## Changelog
 
-### 2026-03-02 — Mobile UX Polish & Bug Fixes
+### v1.4.2 (2026-03-02) — Mobile UX Polish & Bug Fixes
 
 - **Fix: iOS zoom stuck after search** — set search input to 16px font-size (prevents iOS Safari auto-zoom on focus) and blur input after search completes to dismiss keyboard
 - **Fix: Tab navigation broken** — cards in Air/Sea and Environment tabs were invisible after search because CSS animations inside `display:none` parents never complete; now re-triggers entrance animations on every tab switch
@@ -74,7 +74,7 @@ The app deploys automatically to GitHub Pages on every push to `main` via GitHub
 - **Rebalanced spacing** — `--space-sm: 6px` (was 4px), `--space-lg: 12px` (was 8px) for less cramped layout
 - **Better touch targets** — daily rows 44px min-height, bottom nav icons 24px, pollutant/pollen items 8px padding
 
-### 2026-03-02 — Native Mobile UI Redesign
+### v1.4.0 (2026-03-02) — Native Mobile UI Redesign
 
 - **Apple Weather-inspired hero** — large thin-weight temperature (4.5rem), compact city name, small weather icon, vertical layout
 - **Clean hourly strip** — transparent item backgrounds with subtle separator lines, hidden scrollbar
@@ -83,7 +83,7 @@ The app deploys automatically to GitHub Pages on every push to `main` via GitHub
 - **Compact app bar** — 44px height, 34px buttons, subtle search background
 - **Minimal section titles** — small uppercase labels with reduced opacity
 
-### 2026-02-28 — SPA Navigation & Mobile Redesign
+### v1.3.0 (2026-02-28) — SPA Navigation & Mobile Redesign
 
 - **SPA tab architecture** — transformed from single-page scroll to 3-tab layout (Weather, Air & Sea, Environment)
 - **Sticky header** — app bar + tab bar stick to top with scroll-based elevation shadow
@@ -93,7 +93,7 @@ The app deploys automatically to GitHub Pages on every push to `main` via GitHub
 - **Mobile responsiveness** — added 480px and 380px breakpoints with tighter spacing and smaller elements
 - **Post-search redesign** — results pages optimized for mobile viewing
 
-### 2026-02-27 — Dashboard Expansion & iPhone Support
+### v1.2.0 (2026-02-27) — Dashboard Expansion & iPhone Support
 
 - **iPhone support** — safe area insets for notch devices, Apple mobile web app meta tags, small screen optimizations
 - **Style & modularity improvements** — refactored CSS into separate files (style.css, theme.css, components.css, animations.css), improved code organization
@@ -101,11 +101,15 @@ The app deploys automatically to GitHub Pages on every push to `main` via GitHub
 - **Reduced motion** — respects `prefers-reduced-motion` media query
 - **Fix: daily forecast expand/collapse** — resolved broken click handler for expandable daily detail rows
 
-### 2026-02-26 — Initial Release
+### v1.1.0 (2026-02-26) — Comprehensive Dashboard
 
-- **Weather app launch** — city search via Open-Meteo Geocoding API, current conditions, 7-day forecast
-- **Comprehensive dashboard** — added air quality (AQI + pollutants + pollen), marine conditions (waves + swell), atmosphere details, solar radiation charts, soil temperature/moisture at depth
+- **Full weather dashboard** — added air quality (AQI + pollutants + pollen), marine conditions (waves + swell), atmosphere details, solar radiation charts, soil temperature/moisture at depth
 - **Dynamic theming** — automatic background gradient and dark mode based on weather code and day/night
 - **Animated SVG icons** — rain drops, snowflakes, lightning flash, cloud drift, sun rays, fog, wind lines
 - **SVG charts** — monotone cubic line charts, bar charts, sparklines, arc gauges, temperature range bars
 - **GitHub Pages deployment** — automated CI/CD via GitHub Actions workflow
+
+### v1.0.0 (2026-02-26) — Initial Release
+
+- **Weather app launch** — city search via Open-Meteo Geocoding API, current conditions, and 7-day forecast
+- **Vanilla stack** — HTML5, CSS3, JavaScript ES modules, no build tools or frameworks
