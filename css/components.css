@@ -520,77 +520,78 @@
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
-        gap: 2px;
-        margin-bottom: 8px;
-        padding-top: 4px;
+        gap: 4px;
+        margin-bottom: 14px;
+        padding-top: 10px;
     }
 
     .current-city {
-        font-size: 1rem;
+        font-size: 1.05rem;
         font-weight: 600;
     }
 
     .current-icon {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
     }
 
     .current-temp {
-        font-size: 3.8rem;
+        font-size: 4.5rem;
         font-weight: 300;
         letter-spacing: -0.04em;
         line-height: 1;
     }
 
     .current-condition {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         font-weight: 500;
         text-align: center;
     }
 
     .current-feels {
         text-align: center;
-        font-size: 0.8rem;
-        opacity: 0.75;
+        font-size: 0.85rem;
+        opacity: 0.8;
     }
 
     .current-sun {
-        font-size: 0.75rem;
-        gap: 12px;
-        margin-top: 4px;
-        opacity: 0.7;
+        font-size: 0.78rem;
+        gap: 14px;
+        margin-top: 6px;
+        opacity: 0.75;
     }
 
     .current-weather.card {
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        text-align: center;
     }
 
     /* ---- Section titles — minimal like Apple ---- */
     .section-title {
-        font-size: 0.7rem;
-        margin-bottom: 6px;
+        font-size: 0.72rem;
+        margin-bottom: 8px;
         letter-spacing: 0.08em;
-        opacity: 0.75;
+        opacity: 0.85;
     }
 
     .section-title .section-icon {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     .subsection-label {
-        font-size: 0.65rem;
-        margin-top: 8px;
-        margin-bottom: 4px;
+        font-size: 0.7rem;
+        margin-top: 10px;
+        margin-bottom: 6px;
     }
 
     /* ---- Hourly — clean Apple-style strip ---- */
     .hourly-scroll {
         gap: 0;
         padding-bottom: 4px;
-        margin: 0 -12px;
-        padding-left: 12px;
-        padding-right: 12px;
+        margin: 0 -16px;
+        padding-left: 16px;
+        padding-right: 16px;
         scrollbar-width: none;
     }
 
@@ -617,7 +618,7 @@
     }
 
     .hourly-time {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
     }
 
     .hourly-icon {
@@ -626,27 +627,28 @@
     }
 
     .hourly-temp {
-        font-size: 0.85rem;
+        font-size: 0.88rem;
     }
 
     .hourly-precip {
-        font-size: 0.65rem;
+        font-size: 0.68rem;
     }
 
     .hourly-chart-container {
         height: 80px;
-        margin-top: 4px;
+        margin-top: 6px;
+        overflow: hidden;
     }
 
-    /* ---- Daily — compact rows ---- */
+    /* ---- Daily — compact rows with better touch targets ---- */
     .daily-list {
         gap: 0;
     }
 
     .daily-row {
         grid-template-columns: 44px 28px 1fr 16px;
-        min-height: 40px;
-        padding: 4px 6px;
+        min-height: 44px;
+        padding: 6px 8px;
         gap: 6px;
         border-radius: 0;
         border-bottom-color: rgba(255, 255, 255, 0.08);
@@ -657,7 +659,7 @@
     }
 
     .daily-day {
-        font-size: 0.78rem;
+        font-size: 0.82rem;
     }
 
     .daily-icon {
@@ -667,7 +669,7 @@
 
     .daily-temp-low,
     .daily-temp-high {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         width: 28px;
     }
 
@@ -681,8 +683,8 @@
     }
 
     .daily-details {
-        padding: 6px;
-        margin-top: 2px;
+        padding: 8px;
+        margin-top: 4px;
     }
 
     /* ---- AQI — compact ---- */
@@ -703,25 +705,25 @@
     }
 
     .aqi-label {
-        font-size: 0.85rem;
+        font-size: 0.88rem;
     }
 
     .pollutant-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
+        gap: 6px;
     }
 
     .pollutant-item {
-        padding: 6px;
+        padding: 8px;
     }
 
     .pollen-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
+        gap: 6px;
     }
 
     .pollen-item {
-        padding: 6px;
+        padding: 8px;
     }
 
     /* ---- Marine — 2-col ---- */
@@ -731,7 +733,7 @@
     }
 
     .marine-item {
-        padding: 8px;
+        padding: 10px;
         border-radius: var(--radius-sm);
     }
 
@@ -748,18 +750,18 @@
     /* ---- Soil depth bars — compact ---- */
     .depth-label {
         width: 42px;
-        font-size: 0.65rem;
+        font-size: 0.68rem;
     }
 
     .depth-value {
-        width: 40px;
-        font-size: 0.7rem;
+        width: 42px;
+        font-size: 0.72rem;
     }
 
     .depth-row {
-        font-size: 0.75rem;
-        gap: 4px;
-        margin-bottom: 2px;
+        font-size: 0.78rem;
+        gap: 6px;
+        margin-bottom: 3px;
     }
 
     .depth-bar-track {

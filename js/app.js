@@ -145,7 +145,7 @@ const skeletonTemplates = {
     "hourly-forecast": `
         <div class="section-title"><span class="skeleton" style="width:140px;height:14px;display:inline-block"></span></div>
         <div style="display:flex;gap:8px;overflow:hidden">
-            ${Array(8).fill('<div class="skeleton" style="flex:0 0 62px;height:100px;border-radius:12px"></div>').join("")}
+            ${Array(8).fill('<div class="skeleton" style="flex:0 0 58px;height:100px;border-radius:12px"></div>').join("")}
         </div>`,
     "daily-forecast": `
         <div class="section-title"><span class="skeleton" style="width:120px;height:14px;display:inline-block"></span></div>
