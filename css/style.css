@@ -37,7 +37,7 @@
     /* Layout */
     --max-width: 1200px;
     --header-height: auto;
-    --bottom-nav-height: 56px;
+    --bottom-nav-height: 60px;
 
     /* Transitions */
     --transition-fast: 0.15s ease;
@@ -430,10 +430,11 @@ footer a:hover {
 /* ---- Phones (up to 480px) ---- */
 @media (max-width: 480px) {
     :root {
-        --space-lg: 1rem;
-        --space-xl: 1.25rem;
-        --space-2xl: 1.5rem;
-        --radius-lg: 12px;
+        --space-lg: 0.5rem;
+        --space-xl: 1rem;
+        --space-2xl: 1.25rem;
+        --space-sm: 0.25rem;
+        --radius-lg: 14px;
     }
 
     .app-bar {
@@ -442,64 +443,97 @@ footer a:hover {
     }
 
     .app-bar-row {
-        height: 48px;
-        gap: var(--space-sm);
+        height: 44px;
+        gap: 6px;
     }
 
     .app-bar-title {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     main {
-        padding: var(--space-md) var(--space-sm);
-        padding-left: calc(var(--space-sm) + env(safe-area-inset-left, 0px));
-        padding-right: calc(var(--space-sm) + env(safe-area-inset-right, 0px));
+        padding: 8px 6px;
+        padding-left: calc(6px + env(safe-area-inset-left, 0px));
+        padding-right: calc(6px + env(safe-area-inset-right, 0px));
+    }
+
+    .tab-panel.active {
+        gap: 8px;
     }
 
     #city-input {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.85rem;
+        padding: 0.35rem 0.5rem;
+        font-size: 0.82rem;
+    }
+
+    #search-form {
+        background: rgba(255, 255, 255, 0.14);
     }
 
     .search-btn {
-        width: 36px;
-        height: 36px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .theme-toggle {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
     }
 }
 
 /* ---- Small phones (iPhone SE, etc.) ---- */
 @media (max-width: 380px) {
     :root {
-        --space-lg: 0.75rem;
-        --space-md: 0.75rem;
+        --space-lg: 0.375rem;
+        --space-md: 0.5rem;
+    }
+
+    main {
+        padding-left: calc(4px + env(safe-area-inset-left, 0px));
+        padding-right: calc(4px + env(safe-area-inset-right, 0px));
     }
 
     .current-temp {
-        font-size: 2.5rem;
+        font-size: 3.2rem;
+    }
+
+    .current-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hourly-item {
+        flex: 0 0 48px;
+    }
+
+    .hourly-icon {
+        width: 24px;
+        height: 24px;
     }
 
     .daily-row {
-        grid-template-columns: 40px 28px 1fr 16px;
+        grid-template-columns: 38px 24px 1fr 14px;
+        min-height: 36px;
+        gap: 4px;
     }
 
     .daily-temp-low,
     .daily-temp-high {
-        width: 26px;
+        width: 24px;
         font-size: 0.75rem;
     }
 
     .daily-icon {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
     }
 
-    .marine-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
-
+    .marine-grid,
     .detail-grid,
     .detail-panel-grid {
-        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
     }
 }
 
@@ -516,10 +550,10 @@ footer a:hover {
         left: 0;
         right: 0;
         z-index: 100;
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding-bottom: env(safe-area-inset-bottom, 0px);
     }
 
@@ -529,36 +563,47 @@ footer a:hover {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2px;
+        gap: 3px;
         min-height: var(--bottom-nav-height);
         border: none;
         background: transparent;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.55);
         font-family: inherit;
-        font-size: 0.65rem;
+        font-size: 0.625rem;
         font-weight: 600;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.03em;
         cursor: pointer;
         transition: color var(--transition-fast);
+        position: relative;
     }
 
     .bottom-nav-item.active {
         color: #fff;
     }
 
-    .bottom-nav-item.active .bottom-nav-icon {
-        transform: scale(1.1);
+    /* Material 3 pill indicator behind active icon */
+    .bottom-nav-item.active::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 56px;
+        height: 28px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.18);
+        z-index: -1;
     }
 
     .bottom-nav-icon {
-        width: 24px;
-        height: 24px;
-        transition: transform var(--transition-fast);
+        width: 22px;
+        height: 22px;
+        position: relative;
+        z-index: 1;
     }
 
     .bottom-nav-label {
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.02em;
     }
 
     /* Push main content above bottom nav */
@@ -573,8 +618,12 @@ footer a:hover {
 }
 
 [data-theme="night"] .bottom-nav {
-    background: rgba(15, 23, 42, 0.6);
-    border-top-color: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.65);
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="night"] .bottom-nav-item.active::before {
+    background: rgba(255, 255, 255, 0.12);
 }
 
 /* ---- Large phones ---- */
