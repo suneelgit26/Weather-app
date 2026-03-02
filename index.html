@@ -61,6 +61,10 @@
                 <svg class="tab-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg>
                 <span>Environment</span>
             </button>
+            <button class="tab ripple-target" data-tab="icons" role="tab" aria-selected="false" aria-controls="panel-icons">
+                <svg class="tab-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span>Icon Guide</span>
+            </button>
             <div class="tab-indicator" id="tab-indicator"></div>
         </nav>
     </div>
@@ -92,6 +96,11 @@
                 <section id="solar-radiation" class="card hidden" aria-label="Solar radiation" data-animate></section>
                 <section id="soil-conditions" class="card hidden" aria-label="Soil conditions" data-animate></section>
             </div>
+
+            <!-- Tab: Icon Guide -->
+            <div class="tab-panel" id="panel-icons" role="tabpanel" aria-labelledby="tab-icons">
+                <section id="icon-guide" class="card full-width" aria-label="Weather icon guide" data-animate></section>
+            </div>
         </div>
     </main>
 
@@ -108,6 +117,10 @@
         <button class="bottom-nav-item ripple-target" data-tab="environment" aria-label="Environment">
             <svg class="bottom-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg>
             <span class="bottom-nav-label">Environment</span>
+        </button>
+        <button class="bottom-nav-item ripple-target" data-tab="icons" aria-label="Icon Guide">
+            <svg class="bottom-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <span class="bottom-nav-label">Icons</span>
         </button>
     </nav>
 
