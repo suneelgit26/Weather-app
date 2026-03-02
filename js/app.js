@@ -45,6 +45,17 @@ function switchTab(tabName) {
         panel.classList.toggle("active", panel.id === `panel-${tabName}`);
     });
 
+    // Re-trigger entrance animation for cards in the newly active panel
+    // (animations don't run inside display:none parents, so cards can be stuck at opacity:0)
+    const activePanel = document.getElementById(`panel-${tabName}`);
+    if (activePanel) {
+        activePanel.querySelectorAll(".card[data-animate]").forEach((card) => {
+            card.style.animation = "none";
+            card.offsetHeight; // force reflow to reset animation
+            card.style.animation = "";
+        });
+    }
+
     // Move tab indicator
     updateTabIndicator();
 
