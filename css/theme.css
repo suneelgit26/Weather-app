@@ -90,26 +90,40 @@
 /* ---- Responsive: Phones (up to 480px) ---- */
 @media (max-width: 480px) {
     .card {
-        padding: var(--space-md);
-        border-radius: var(--radius-md);
+        padding: 10px 12px;
+        border-radius: var(--radius-lg);
+        border: none;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
 
     .detail-grid,
     .detail-panel-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
     }
 
     .detail-item {
-        padding: var(--space-xs) var(--space-sm);
+        padding: 6px 8px;
         border-radius: var(--radius-sm);
+        gap: 1px;
     }
 
     .detail-item .detail-value {
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .detail-item .detail-label {
+        font-size: 0.6rem;
     }
 
     .section-title {
-        margin-bottom: var(--space-sm);
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+        letter-spacing: 0.08em;
+        opacity: 0.75;
     }
 }
 
