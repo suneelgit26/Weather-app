@@ -17,8 +17,9 @@ A modern, native-feeling weather dashboard built with vanilla HTML, CSS, and Jav
 
 ### SPA-Style Navigation
 - **Sticky app bar** — inline search with pill-shaped input, theme toggle, scroll-based elevation shadow
-- **Tab navigation** — 3 tabs (Weather, Air & Sea, Environment) with animated indicator bar
+- **Tab navigation** — 4 tabs (Weather, Air & Sea, Environment, Icon Guide) with animated indicator bar
 - **Bottom navigation** — mobile-only fixed bottom bar with Material 3 pill-shaped active indicator
+- **Icon Guide tab** — visual reference of all 15 animated weather icons with names and the conditions they represent
 - **Tab transitions** — smooth entrance animations re-triggered on every tab switch
 - **Skeleton loading** — per-section shimmer placeholders while data loads
 
@@ -62,6 +63,12 @@ The app deploys automatically to GitHub Pages on every push to `main` via GitHub
 - GitHub Pages + GitHub Actions for hosting
 
 ## Changelog
+
+### v1.5.0 (2026-03-02) — Icon Guide Tab
+
+- **New "Icon Guide" tab** — 4th tab displaying all 15 animated weather icons in a responsive grid with names and weather condition descriptions
+- **Static content** — renders on page load without requiring an API call or city search
+- **Responsive grid** — adapts from 2 columns on mobile to auto-fill on desktop
 
 ### v1.4.2 (2026-03-02) — Mobile UX Polish & Bug Fixes
 

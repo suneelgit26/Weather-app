@@ -7,6 +7,7 @@ import { renderDailyForecast } from "./ui/daily.js";
 import { renderAirQuality } from "./ui/air-quality.js";
 import { renderMarine } from "./ui/marine.js";
 import { renderAtmosphere, renderSolar, renderSoil } from "./ui/details.js";
+import { renderIconGuide } from "./ui/icon-guide.js";
 
 const searchForm = document.getElementById("search-form");
 const cityInput = document.getElementById("city-input");
@@ -15,6 +16,9 @@ const errorEl = document.getElementById("error");
 
 // Initialize theme toggle
 initThemeToggle();
+
+// Render static content (no API data needed)
+renderIconGuide();
 
 // ============================================
 // Tab Navigation
