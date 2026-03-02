@@ -284,6 +284,7 @@ async function loadWeather(city) {
         renderSoil(weather.hourly, weather.hourly_units);
 
         cityInput.value = city.name;
+        cityInput.blur(); // dismiss keyboard & release focus to revert iOS zoom
     } catch (err) {
         showError("Failed to load weather data. Please try again.");
         console.error(err);
